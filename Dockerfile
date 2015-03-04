@@ -2,7 +2,7 @@ FROM outeredge/edge-docker-php:1.2.0
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        php5-mcrypt php5-gd && \
+        php5-mcrypt php5-gd sendmail && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN php5enmod mcrypt
