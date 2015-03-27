@@ -24,4 +24,6 @@ RUN chmod +x /run.sh
 
 ENV APPLICATION_ENV dev
 
+WORKDIR /var/www/public
+
 CMD ["/run.sh"]
