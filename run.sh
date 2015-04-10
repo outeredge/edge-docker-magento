@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [[ ! -e /var/www/public/app/etc/local.xml ]]
+if [[ /var/www/app/etc/local.xml -ot /var/www/app/etc/local.$APPLICATION_ENV.xml ]]
 then
-    cp /var/www/public/app/etc/local.$APPLICATION_ENV.xml /var/www/public/app/etc/local.xml
+    cp /var/www/app/etc/local.$APPLICATION_ENV.xml /var/www/app/etc/local.xml
 fi
 
-/apache.sh
+/usr/bin/supervisord
