@@ -6,10 +6,11 @@ ENV APPLICATION_ENV dev
 # Install magento
 RUN wget https://github.com/OpenMage/magento-mirror/archive/1.9.1.0.tar.gz -O - | tar -zxf - -C /var/www --strip=1
 
-# Install sass
+# Install sass & sass-css-importer
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ruby && \
     gem install sass --no-rdoc --no-ri -v "~> 3.4.13" && \
+    gem install sass-css-importer --no-rdoc --no-ri -v "~> 1.0.0.beta.0" && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Setup web server
