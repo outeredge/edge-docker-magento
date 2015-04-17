@@ -14,7 +14,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Setup web server
-COPY nginx.conf /etc/nginx/conf.d/default
+COPY nginx.conf.j2 /etc/nginx/templates/default.conf.j2
 COPY php.ini /usr/local/etc/php/conf.d/magento.ini
 
 # File permissions
