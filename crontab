@@ -1,0 +1,1 @@
+*/5 * * * * www-data /bin/sh /var/www/cron.sh

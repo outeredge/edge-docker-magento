@@ -14,8 +14,9 @@ RUN apt-get update && \
 RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.0-lts.tar.gz -O - | tar -zxf - -C /var/www --strip=1
 
 # Setup web server
-COPY *.conf /etc/nginx/
+COPY magento_*.conf /etc/nginx/
 COPY php.ini /usr/local/etc/php/conf.d/magento.ini
+COPY crontab /etc/cron.d/magento
 RUN sed -i '/root/a include magento_*.conf;' /etc/nginx/conf.d/default.conf.j2
 
 # File permissions
