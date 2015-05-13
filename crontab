@@ -1,1 +1,1 @@
-*/5 * * * * www-data /bin/sh /var/www/cron.sh
+*/5 * * * * www-data /bin/sh /var/www/cron.sh &>
