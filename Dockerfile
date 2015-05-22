@@ -17,21 +17,8 @@ RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.0-lts.tar.gz -O -
 # Setup web server
 COPY magento_*.conf /etc/nginx/
 COPY php.ini /usr/local/etc/php/conf.d/magento.ini
-COPY crontab /etc/cron.d/magento
+COPY crontab /etc/
 RUN sed -i '/root/a include magento_*.conf;' /etc/nginx/conf.d/default.conf.j2
-
-# File permissions
-RUN find . -type f -exec chmod 400 {} \; && \
-    find . -type d -exec chmod 500 {} \; && \
-    find var/ -type f -exec chmod 600 {} \; && \
-    find var/ -type d -exec chmod 700 {} \; && \
-    find media/ -type f -exec chmod 600 {} \; && \
-    find media/ -type d -exec chmod 700 {} \; && \
-    chmod 700 includes && \
-    chmod 600 includes/config.php && \
-    chmod 700 app/etc && \
-    chmod 600 app/etc/*.xml && \
-    chown -R www-data:www-data /var/www
 
 # Run script for local.xml
 COPY run.sh /run.sh
