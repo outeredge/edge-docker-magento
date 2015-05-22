@@ -18,7 +18,7 @@ RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.0-lts.tar.gz -O -
 COPY magento_*.conf /etc/nginx/
 COPY php.ini /usr/local/etc/php/conf.d/magento.ini
 COPY crontab /etc/
-RUN sed -i '/root/a include magento_*.conf;' /etc/nginx/conf.d/default.conf.j2
+RUN sed -i '/root/a include magento_*.conf;' /templates/nginx-default.conf.j2
 
 # Run script for local.xml
 COPY run.sh /run.sh
