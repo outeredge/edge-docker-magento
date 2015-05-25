@@ -5,4 +5,6 @@ then
     cp /var/www/app/etc/local.$APPLICATION_ENV.xml /var/www/app/etc/local.xml
 fi
 
+chmod -R 770 /var/www/media /var/www/var
+
 /usr/bin/supervisord
