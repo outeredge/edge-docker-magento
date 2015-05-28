@@ -20,6 +20,9 @@ COPY php.ini /usr/local/etc/php/conf.d/magento.ini
 COPY crontab /etc/
 RUN sed -i '/root/a include magento_*.conf;' /templates/nginx-default.conf.j2
 
+# Persist sessions
+VOLUME /var/www/var/session
+
 # Run script for local.xml
 COPY run.sh /run.sh
 CMD ["/run.sh"]
