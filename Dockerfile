@@ -12,7 +12,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento with patches
-RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.0-lts.tar.gz -O - | tar -zxf - -C /var/www --strip=1
+RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.1.tar.gz -O - | tar -zxf - -C /var/www --strip=1
 
 # Setup web server
 COPY magento_*.conf /etc/nginx/
