@@ -18,7 +18,9 @@ RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.1.tar.gz -O - | t
 COPY magento_*.conf /etc/nginx/
 COPY php.ini /usr/local/etc/php/conf.d/magento.ini
 COPY crontab /etc/
-RUN sed -i '/root/a include magento_*.conf;' /templates/nginx-default.conf.j2
+RUN sed -i '/root/a include magento_*.conf;' /templates/nginx-default.conf.j2 && \
+    sed -i "s/isset(\$_SERVER\['MAGE_IS_DEVELOPER_MODE'\])/getenv('APPLICATION_ENV') !== 'prod'/" index.php && \
+    sed -i "/setIsDeveloperMode(true);/a ini_set('display_errors', 1);" index.php
 
 # Persist sessions
 VOLUME /var/www/var/session
