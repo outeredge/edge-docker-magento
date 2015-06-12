@@ -1,1 +1,3 @@
+PATH=/usr/local/bin:/bin:/usr/bin
+
 */5 * * * * www-data /var/www/cron.sh 2>&1
