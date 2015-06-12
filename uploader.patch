@@ -20,7 +20,7 @@
 +            $dbHelper = Mage::helper('core/file_storage_database');
 +            $this->_result['file'] = $dbHelper->saveUploadedFile($result);
 +        }
-+        
++
          return $this;
      }
- 
+

@@ -12,23 +12,17 @@ RUN apt-get update && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento with patches
-RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.1.tar.gz -O - | tar -zxf - -C /var/www --strip=1
-
-# Setup web server
-COPY magento_*.conf /etc/nginx/
-COPY php.ini /usr/local/etc/php/conf.d/magento.ini
-COPY crontab /etc/
-COPY uploader.patch /var/www
+RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.1.tar.gz -qO - | tar -zxf - -C /var/www --strip=1
 
 # Apply config & patches
+COPY . /
 RUN sed -i '/root/a include magento_*.conf;' /templates/nginx-default.conf.j2 && \
     sed -i "s/isset(\$_SERVER\['MAGE_IS_DEVELOPER_MODE'\])/getenv('APPLICATION_ENV') !== 'prod'/" index.php && \
     sed -i "/setIsDeveloperMode(true);/a ini_set('display_errors', 1);" index.php && \
-    patch -p0 < uploader.patch
+    patch -p0 < /uploader.patch
 
 # Persist sessions
 VOLUME /var/www/var/session
 
 # Run script for local.xml
-COPY run.sh /run.sh
 CMD ["/run.sh"]
