@@ -1,0 +1,26 @@
+--- lib/Varien/File/Uploader.php	2015-06-12 12:03:34.095686134 +0100
++++ lib/Varien/File/Uploader.php	2015-06-12 11:47:33.119688664 +0100
+@@ -163,6 +163,23 @@
+      */
+     protected function _afterSave($result)
+     {
++        if (class_exists('Mage', false)) {
++            if (empty($result['path']) || empty($result['file'])) {
++                return $this;
++            }
++
++            /** @var $helper Mage_Core_Helper_File_Storage */
++            $helper = Mage::helper('core/file_storage');
++
++            if ($helper->isInternalStorage()) {
++                return $this;
++            }
++
++            /** @var $dbHelper Mage_Core_Helper_File_Storage_Database */
++            $dbHelper = Mage::helper('core/file_storage_database');
++            $this->_result['file'] = $dbHelper->saveUploadedFile($result);
++        }
++        
+         return $this;
+     }
+ 
