@@ -2,7 +2,8 @@ FROM outeredge/edge-docker-php:5.6.7
 
 # Environment vars
 ENV APPLICATION_ENV=dev \
-    ENABLE_CRON=On
+    ENABLE_CRON=On \
+    ADDITIONAL_HOSTS=
 
 # Install sass & sass-css-importer
 RUN apt-get update && \
