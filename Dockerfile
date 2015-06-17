@@ -13,7 +13,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento with patches
-RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.1.tar.gz -qO - | tar -zxf - -C /var/www --strip=1
+RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.1.tar.gz -qO - | tar -zxf - -C /var/www --strip=1 --exclude='README.md'
 
 # Apply config & patches
 COPY . /
