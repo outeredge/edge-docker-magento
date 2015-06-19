@@ -20,7 +20,7 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
                     sed -i "s/ssl-chain.pem/ssl-chain-${HOST[0]}.pem/" /etc/nginx/conf.d/${HOST[0]}.conf
                 fi
             else
-                sed -i '/listen 443/,/root/ {/root/!d}'
+                sed -i '/listen 443/,/root/ {/root/!d}' /etc/nginx/conf.d/${HOST[0]}.conf
             fi
         done
     done <<< "$ADDITIONAL_STORES"
