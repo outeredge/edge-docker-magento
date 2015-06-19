@@ -1,5 +1,5 @@
 # edge-docker-magento
-Magento running on Docker.
+Magento running on Docker. Places nicely with [dredger](https://github.com/outeredge/dredger).
 
 ## Configuration Options
 Most configuration can be done with environment variables. Here are the available options;
