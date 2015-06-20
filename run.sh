@@ -8,6 +8,7 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
             cp /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/${HOST[0]}.conf
             sed -i "/root/a server_name ${HOST[1]};" /etc/nginx/conf.d/${HOST[0]}.conf
             sed -i "/fastcgi_pass/i fastcgi_param MAGE_RUN_CODE ${HOST[0]};" /etc/nginx/conf.d/${HOST[0]}.conf
+            sed -i 's/ reuseport//g' /etc/nginx/conf.d/${HOST[0]}.conf
 
             if [ -f "/etc/ssl/certs/ssl-cert-${HOST[0]}.pem" ]; then
                 sed -i "s/ssl-cert.pem/ssl-cert-${HOST[0]}.pem/" /etc/nginx/conf.d/${HOST[0]}.conf
