@@ -22,8 +22,8 @@ RUN sed -i '/root/a include magento_*.conf;' /templates/nginx-default.conf.j2 &&
     sed -i "/setIsDeveloperMode(true);/a ini_set('display_errors', 1);" index.php && \
     patch -p0 < /uploader.patch
 
-# Persist sessions
-VOLUME /var/www/var/session
+# Persist sessions and product media
+VOLUME ["/var/www/var/session", "/var/www/media/catalog"]
 
 # Run script for local.xml
 CMD ["/run.sh"]
