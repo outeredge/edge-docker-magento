@@ -12,8 +12,8 @@ RUN apt-get update && \
     gem install sass-css-importer --no-rdoc --no-ri -v "~> 1.0.0.beta.0" && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
-# Install magento with patches
-RUN wget https://github.com/OpenMage/magento-lts/archive/1.9.1.1.tar.gz -qO - | tar -zxf - -C /var/www --strip=1 --exclude='README.md'
+# Install magento
+RUN wget https://github.com/OpenMage/magento-mirror/archive/1.9.2.0.tar.gz -qO - | tar -zxf - -C /var/www --strip=1 --exclude='README.md'
 
 # Apply config & patches
 COPY . /
