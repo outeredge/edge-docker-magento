@@ -13,7 +13,8 @@ RUN apt-get update && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento
-RUN wget https://github.com/OpenMage/magento-mirror/archive/1.9.2.0.tar.gz -qO - | tar -zxf - -C /var/www --strip=1 --exclude='README.md'
+RUN wget https://github.com/OpenMage/magento-mirror/archive/1.9.2.0.tar.gz -qO - | tar -zxf - -C /var/www --strip=1 --exclude='README.md' && \
+    chmod +x /var/www/cron.sh
 
 # Apply config & patches
 COPY . /
