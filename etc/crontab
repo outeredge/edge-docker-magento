@@ -1,6 +1,6 @@
 PATH=/usr/local/bin:/bin:/usr/bin
-MAILTO=
+MAILTO=""
 
-*/5 * * * * www-data /var/www/cron.sh
+*/5 * * * * www-data /bin/sh /var/www/cron.sh
 0 4 * * * www-data php -f /var/www/shell/indexer.php reindexall
 
