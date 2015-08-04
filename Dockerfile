@@ -1,9 +1,10 @@
-FROM outeredge/edge-docker-php:5.6.10
+FROM outeredge/edge-docker-php:5.6.11
 
 # Environment vars
 ENV APPLICATION_ENV=dev \
+    ADDITIONAL_STORES= \
     ENABLE_CRON=On \
-    ADDITIONAL_STORES=
+    MAGENTO_VERSION=1.9.2.1
 
 # Install sass & sass-css-importer
 RUN apt-get update && \
@@ -13,7 +14,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento
-RUN wget https://github.com/OpenMage/magento-mirror/archive/1.9.2.0.tar.gz -qO - | tar -zxf - -C /var/www --strip=1 --exclude='README.md' && \
+RUN wget https://github.com/OpenMage/magento-mirror/archive/${MAGENTO_VERSION}.tar.gz -qO - | tar -zxf - -C /var/www --strip=1 --exclude='README.md' && \
     chmod +x /var/www/cron.sh
 
 # Apply config & patches
