@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:5.6.11
+FROM outeredge/edge-docker-php:5.6.12
 
 # Environment vars
 ENV APPLICATION_ENV=dev \
@@ -6,11 +6,9 @@ ENV APPLICATION_ENV=dev \
     ENABLE_CRON=On \
     MAGENTO_VERSION=1.9.2.1
 
-# Install sass & sass-css-importer
+# Install npm
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ruby && \
-    gem install sass --no-rdoc --no-ri -v "~> 3.4.13" && \
-    gem install sass-css-importer --no-rdoc --no-ri -v "~> 1.0.0.beta.0" && \
+    apt-get install -y --no-install-recommends nodejs-legacy npm && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento
