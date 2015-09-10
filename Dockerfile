@@ -8,7 +8,7 @@ ENV APPLICATION_ENV=dev \
 
 # Install npm
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends nodejs-legacy npm && \
+    apt-get install -y --no-install-recommends ruby nodejs-legacy npm && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento
