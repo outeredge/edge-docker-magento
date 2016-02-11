@@ -13,9 +13,11 @@ RUN apt-get update && \
 
 # Install magento
 RUN wget https://github.com/magento/magento2/archive/${MAGENTO_VERSION}.tar.gz -qO - | tar -zxf - -C /var/www --strip=1 --exclude='README.md' && \
-    chmod +x /var/www/bin/magento
+    chmod +x /var/www/bin/magento && \
+    composer install --no-interaction --optimize-autoloader --prefer-dist --no-dev && \
+    composer clear-cache
 
-# Apply config & patches
+# Add system configuration
 COPY . /
 
 # Persist certain folders
