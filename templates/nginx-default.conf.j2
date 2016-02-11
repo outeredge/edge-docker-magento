@@ -21,28 +21,16 @@ server {
     }
     {% endif %}
 
-    root /var/www/pub;
+    set $MAGE_ROOT /var/www;
+    set $MAGE_MODE {{ MAGE_MODE }};
+
+    fastcgi_param SERVER_NAME $host;
+
+    {% if NGINX_HSTS == 'On' %}
+    fastcgi_param HTTPS 'on';
+    {% endif %}
 
     include magento_*.conf;
-
-    location / {
-        try_files $uri $uri/ /index.php$is_args$args;
-    }
-
-    location ~ \.php$ {
-        try_files $uri =404;
-
-        include fastcgi.conf;
-        fastcgi_param SERVER_NAME $host;
-        {% if NGINX_HSTS == 'On' %}
-        fastcgi_param HTTPS 'on';
-        {% endif %}
-        fastcgi_read_timeout 300;
-        fastcgi_pass 127.0.0.1:9000;
-    }
-
-    location = /robots.txt { log_not_found off; }
-    location = /favicon.ico { log_not_found off; }
 
     include security.conf;
 
