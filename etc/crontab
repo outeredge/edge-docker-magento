@@ -1,6 +1,6 @@
 PATH=/usr/local/bin:/bin:/usr/bin
 MAILTO=""
 
-*/5 * * * * www-data /bin/sh /var/www/cron.sh
-0 4 * * * www-data php -f /var/www/shell/indexer.php reindexall
-
+*/1 * * * * www-data /usr/local/bin/php /var/www/bin/magento cron:run
+*/1 * * * * www-data /usr/local/bin/php /var/www/update/cron.php
+*/1 * * * * www-data /usr/local/bin/php /var/www/bin/magento setup:cron:run

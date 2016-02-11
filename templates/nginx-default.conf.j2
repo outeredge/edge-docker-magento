@@ -1,0 +1,52 @@
+server {
+    listen 80 default_server reuseport;
+
+    {% if NGINX_SSL != 'Off' %}
+    listen 443 default_server ssl http2 reuseport;
+    ssl_certificate /etc/ssl/certs/ssl-cert.pem;
+    ssl_certificate_key /etc/ssl/private/ssl-cert.key;
+    ssl_trusted_certificate /etc/ssl/certs/ssl-chain.pem;
+    {% if NGINX_SSL == 'Reduced' %}
+    ssl_dhparam	/etc/ssl/certs/dhparam-reduced.pem;
+    ssl_ciphers AES256+EECDH:AES256+EDH:DHE-RSA-AES128-SHA:!aNULL;
+    {% elif NGINX_SSL == 'High' %}
+    ssl_protocols TLSv1.1 TLSv1.2;
+    {% endif %}
+    {% endif %}
+    {% if NGINX_HSTS == 'On' %}
+    add_header Strict-Transport-Security max-age=15768000;
+
+    if ($scheme != "https") {
+        return 301 https://$host$request_uri;
+    }
+    {% endif %}
+
+    root /var/www/pub;
+
+    include magento_*.conf;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+
+        include fastcgi.conf;
+        fastcgi_param SERVER_NAME $host;
+        {% if NGINX_HSTS == 'On' %}
+        fastcgi_param HTTPS 'on';
+        {% endif %}
+        fastcgi_read_timeout 300;
+        fastcgi_pass 127.0.0.1:9000;
+    }
+
+    location = /robots.txt { log_not_found off; }
+    location = /favicon.ico { log_not_found off; }
+
+    include security.conf;
+
+    {% if NGINX_PAGESPEED == 'On' %}
+    include pagespeed.conf;
+    {% endif %}
+}
