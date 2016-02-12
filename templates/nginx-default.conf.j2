@@ -24,12 +24,6 @@ server {
     set $MAGE_ROOT /var/www;
     set $MAGE_MODE {{ MAGE_MODE }};
 
-    fastcgi_param SERVER_NAME $host;
-
-    {% if NGINX_HSTS == 'On' %}
-    fastcgi_param HTTPS 'on';
-    {% endif %}
-
     include magento_*.conf;
 
     include security.conf;
@@ -37,4 +31,13 @@ server {
     {% if NGINX_PAGESPEED == 'On' %}
     include pagespeed.conf;
     {% endif %}
+    
+    fastcgi_param SERVER_NAME $host;
+    {% if NGINX_HSTS == 'On' %}
+    fastcgi_param HTTPS 'on';
+    {% endif %}
+}
+
+upstream fastcgi_backend {
+    server 127.0.0.1:9000;
 }
