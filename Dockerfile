@@ -1,10 +1,13 @@
 FROM outeredge/edge-docker-php:7.0.3
 
 # Environment vars
-ENV APPLICATION_ENV=dev \
-    ADDITIONAL_STORES= \
+ENV ADDITIONAL_STORES= \
     ENABLE_CRON=On \
     MAGENTO_VERSION=2.0.2 \
+    DB_HOST= \
+    DB_USERNAME= \
+    DB_PASSWORD= \
+    DB_NAME= \
     MAGE_MODE=developer
 
 # Install npm
@@ -23,5 +26,5 @@ RUN wget https://github.com/outeredge/edge-docker-magento/releases/download/${MA
 # Persist certain folders
 VOLUME ["/var/www/var/session", "/var/www/pub/media/catalog", "/var/www/pub/media/wysiwyg"]
 
-# Run script for local.xml
+# Run
 CMD ["/run.sh"]

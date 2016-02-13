@@ -25,16 +25,9 @@ server {
     set $MAGE_MODE {{ MAGE_MODE }};
 
     include magento_*.conf;
-
     include security.conf;
-
     {% if NGINX_PAGESPEED == 'On' %}
     include pagespeed.conf;
-    {% endif %}
-    
-    fastcgi_param SERVER_NAME $host;
-    {% if NGINX_HSTS == 'On' %}
-    fastcgi_param HTTPS 'on';
     {% endif %}
 }
 
