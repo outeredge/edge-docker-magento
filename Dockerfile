@@ -4,7 +4,7 @@ FROM outeredge/edge-docker-php:5.6.18
 ENV APPLICATION_ENV=dev \
     ADDITIONAL_STORES= \
     ENABLE_CRON=On \
-    MAGENTO_VERSION=1.9.2.3
+    MAGENTO_VERSION=1.9.2.4
 
 # Install npm
 RUN apt-get update && \
