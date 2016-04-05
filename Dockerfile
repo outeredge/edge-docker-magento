@@ -20,6 +20,7 @@ COPY . /
 RUN sed -i '/root/a include magento_*.conf;' /templates/nginx-default.conf.j2 && \
     sed -i "s/isset(\$_SERVER\['MAGE_IS_DEVELOPER_MODE'\])/getenv('APPLICATION_ENV') == 'dev'/" index.php && \
     sed -i "/setIsDeveloperMode(true);/a ini_set('display_errors', 1);" index.php && \
+    echo -e "order deny,allow\ndeny from all" >> downloader/.htaccess && \
     patch -p0 < /uploader.patch
 
 # Persist certain folders
