@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:5.6.18
+FROM outeredge/edge-docker-php:5.6.19
 
 # Environment vars
 ENV APPLICATION_ENV=dev \
@@ -7,8 +7,8 @@ ENV APPLICATION_ENV=dev \
     MAGENTO_VERSION=1.9.2.4
 
 # Install npm
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ruby nodejs-legacy npm && \
+RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
+    apt-get install -y --no-install-recommends nodejs && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento
