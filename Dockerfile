@@ -1,18 +1,18 @@
-FROM outeredge/edge-docker-php:7.0.3
+FROM outeredge/edge-docker-php:7.0.4
 
 # Environment vars
 ENV ADDITIONAL_STORES= \
     ENABLE_CRON=On \
-    MAGENTO_VERSION=2.0.2 \
+    MAGENTO_VERSION=2.0.4 \
     DB_HOST= \
     DB_USERNAME= \
     DB_PASSWORD= \
     DB_NAME= \
     MAGE_MODE=developer
 
-# Install npm
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ruby nodejs-legacy npm && \
+# Install node
+RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
+    apt-get install -y --no-install-recommends nodejs && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Add system configuration
