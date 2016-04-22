@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:7.0.4
+FROM outeredge/edge-docker-php:7.0.5
 
 # Environment vars
 ENV ADDITIONAL_STORES= \
