@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:5.6.20
+FROM outeredge/edge-docker-php:7.0.11
 
 # Environment vars
 ENV APPLICATION_ENV=dev \
