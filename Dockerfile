@@ -3,7 +3,7 @@ FROM outeredge/edge-docker-php:7.0.11
 # Environment vars
 ENV ADDITIONAL_STORES= \
     ENABLE_CRON=On \
-    MAGENTO_VERSION=2.1.1 \
+    MAGENTO_VERSION=2.1.2 \
     DB_HOST= \
     DB_USERNAME= \
     DB_PASSWORD= \
