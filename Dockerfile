@@ -11,7 +11,7 @@ ENV ADDITIONAL_STORES= \
     MAGE_MODE=developer
 
 # Install node
-RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y --no-install-recommends nodejs && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
