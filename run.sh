@@ -28,4 +28,9 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
     done <<< "$ADDITIONAL_STORES"
 fi
 
+if [[ /var/www/app/etc/env.php -ot /var/www/app/etc/env.php.$MAGE_MODE ]]
+then
+    cp /var/www/app/etc/env.php.$MAGE_MODE /var/www/app/etc/env.php
+fi
+
 /usr/bin/supervisord
