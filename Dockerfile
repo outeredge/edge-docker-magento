@@ -1,10 +1,10 @@
-FROM outeredge/edge-docker-php:5.6.26
+FROM outeredge/edge-docker-php:5.6.28
 
 # Environment vars
 ENV APPLICATION_ENV=dev \
     ADDITIONAL_STORES= \
     ENABLE_CRON=On \
-    MAGENTO_VERSION=1.9.3.0
+    MAGENTO_VERSION=1.9.3.1
 
 # Install npm
 RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
