@@ -4,3 +4,4 @@ MAILTO=""
 */1 * * * * www-data /usr/local/bin/php /var/www/bin/magento cron:run
 */1 * * * * www-data /usr/local/bin/php /var/www/update/cron.php
 */1 * * * * www-data /usr/local/bin/php /var/www/bin/magento setup:cron:run
+
