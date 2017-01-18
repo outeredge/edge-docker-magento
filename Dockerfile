@@ -21,7 +21,8 @@ COPY . /
 # Install magento
 RUN wget https://github.com/outeredge/edge-docker-magento/releases/download/${MAGENTO_VERSION}/Magento-CE-${MAGENTO_VERSION}.tar.gz -qO - | tar -zxf - -C /var/www && \
     chmod +x /var/www/bin/magento && \
-    cp /var/www/nginx.conf.sample /etc/nginx/magento_default.conf
+    cp /var/www/nginx.conf.sample /etc/nginx/magento_default.conf && \
+    sed -i '/$relativePath = $request->getPathInfo();/a $relativePath = ltrim($relativePath, "media/");' /var/www/pub/get.php
 
 # Persist certain folders
 VOLUME ["/var/www/var/session", "/var/www/pub/media/catalog", "/var/www/pub/media/wysiwyg"]
