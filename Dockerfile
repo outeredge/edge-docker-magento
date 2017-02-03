@@ -7,7 +7,7 @@ ENV APPLICATION_ENV=dev \
     MAGENTO_VERSION=1.9.2.4
 
 # Install npm
-RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y --no-install-recommends nodejs && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
