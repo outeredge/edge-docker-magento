@@ -3,16 +3,15 @@ FROM outeredge/edge-docker-php:7.0.15
 # Environment vars
 ENV ADDITIONAL_STORES= \
     ENABLE_CRON=On \
-    MAGENTO_VERSION=2.1.3 \
+    MAGENTO_VERSION=2.1.4 \
     DB_HOST= \
     DB_USERNAME= \
     DB_PASSWORD= \
     DB_NAME= \
-    MAGE_MODE=developer
+    MAGE_MODE=default
 
 # Install node
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
-    apt-get install -y --no-install-recommends nodejs && \
+RUN apt-get install -y --no-install-recommends nodejs && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Add system configuration
