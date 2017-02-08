@@ -4,11 +4,10 @@ FROM outeredge/edge-docker-php:5.6.30
 ENV APPLICATION_ENV=dev \
     ADDITIONAL_STORES= \
     ENABLE_CRON=On \
-    MAGENTO_VERSION=1.9.3.1
+    MAGENTO_VERSION=1.9.3.2
 
 # Install npm
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
-    apt-get install -y --no-install-recommends nodejs && \
+RUN apt-get install -y --no-install-recommends nodejs && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento
