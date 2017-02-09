@@ -7,7 +7,7 @@ ENV APPLICATION_ENV=dev \
     MAGENTO_VERSION=1.9.3.2
 
 # Install npm
-RUN apt-get update && apt-get install -y --no-install-recommends nodejs && \
+RUN apt-get update && apt-get install -y --no-install-recommends nodejs-legacy npm && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install magento
