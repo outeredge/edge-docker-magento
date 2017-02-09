@@ -11,7 +11,7 @@ ENV ADDITIONAL_STORES= \
     MAGE_MODE=default
 
 # Install node
-RUN apt-get update && apt-get install -y --no-install-recommends nodejs && \
+RUN apt-get update && apt-get install -y --no-install-recommends nodejs-legacy npm && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Add system configuration
