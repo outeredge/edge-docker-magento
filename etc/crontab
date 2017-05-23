@@ -3,4 +3,5 @@ MAILTO=""
 
 */5 * * * * www-data /bin/sh /var/www/cron.sh
 0 4 * * * www-data php -f /var/www/shell/indexer.php reindexall
+0 3 * * * www-data php -f /var/www/shell/log.php clean --days 30
 
