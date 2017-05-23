@@ -33,4 +33,6 @@ then
     cp /var/www/app/etc/env.php.$MAGE_MODE /var/www/app/etc/env.php
 fi
 
-/usr/bin/supervisord
+rm -rf /var/www/var/cache/* /var/www/public/static /var/www/var/di /var/www/media/js /var/www/media/css /var/www/media/css_secure /var/www/cachebuster.php
+
+/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
