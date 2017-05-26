@@ -39,4 +39,4 @@ fi
 
 rm -rf /var/www/var/cache/* /var/www/public/static /var/www/var/di /var/www/media/js /var/www/media/css /var/www/media/css_secure /var/www/cachebuster.php
 
-/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+/usr/bin/supervisord
