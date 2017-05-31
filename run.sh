@@ -33,4 +33,6 @@ then
     cp /var/www/app/etc/local.xml.$APPLICATION_ENV /var/www/app/etc/local.xml
 fi
 
+rm -rf /var/www/var/cache/*
+
 /usr/bin/supervisord
