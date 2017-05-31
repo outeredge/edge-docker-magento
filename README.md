@@ -11,3 +11,6 @@ Most configuration can be done with environment variables. Here are the availabl
 | ADDITIONAL_STORES | -       | Comma separated list of Magento store codes and Nginx server_name's in the format `MAGE_RUN_CODE:server_name`, i.e. `test_view:test.co.uk` or using a regex `test_view:~test` which would switch Magento to the `test_view` store if the domain name contained the word `test` |
 
 See [edge-docker-php](https://github.com/outeredge/edge-docker-php) for additional options such as SSL, SMTP and PHP  configuration.
+
+## PHP 7 Compatibility
+You will need to add the `inchoo/php7` module to use the Magento `1.9.x-php7` branches.
