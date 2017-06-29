@@ -35,4 +35,4 @@ fi
 
 rm -rf /var/www/var/cache/*
 
-/usr/bin/supervisord
+exec /usr/bin/supervisord
