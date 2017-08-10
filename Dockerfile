@@ -1,13 +1,9 @@
-FROM outeredge/edge-docker-php:7.0.19
+FROM outeredge/edge-docker-php:7.0.22
 
 # Environment vars
 ENV ADDITIONAL_STORES= \
-    ENABLE_CRON=On \
-    MAGENTO_VERSION=2.1.7 \
-    DB_HOST= \
-    DB_USERNAME= \
-    DB_PASSWORD= \
-    DB_NAME= \
+    ENABLE_CRON=Off \
+    MAGENTO_VERSION=2.1.8 \
     MAGE_MODE=default
 
 # Install node
