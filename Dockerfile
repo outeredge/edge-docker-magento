@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends nodejs-legacy n
 COPY . /
 
 # Install magento
-RUN wget https://github.com/outeredge/edge-docker-magento/releases/download/${MAGENTO_VERSION}/Magento-CE-${MAGENTO_VERSION}.tar.gz -qO - | tar -zxf - -C /var/www && \
+RUN wget https://github.com/outeredge/edge-docker-magento/releases/download/${MAGENTO_VERSION}/Magento-CE-${MAGENTO_VERSION}.tar.gz -qO - | tar -zxf - -C /var/www --exclude='composer.lock' && \
     chmod +x /var/www/bin/magento && \
     cp /var/www/nginx.conf.sample /etc/nginx/magento_default.conf && \
     sed -i '/$relativePath = $request->getPathInfo();/a $relativePath = ltrim($relativePath, "media/");' /var/www/pub/get.php
