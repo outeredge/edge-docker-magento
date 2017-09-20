@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 if [ ! -z "$ADDITIONAL_STORES" ]; then
     while IFS=',' read -ra HOSTS; do
@@ -30,13 +30,7 @@ fi
 
 if [[ /var/www/app/etc/env.php -ot /var/www/app/etc/env.php.$MAGE_MODE ]]
 then
-    cp /var/www/app/etc/env.php.$MAGE_MODE /var/www/app/etc/env.php
+    cp -p /var/www/app/etc/env.php.$MAGE_MODE /var/www/app/etc/env.php
 fi
-
-if [[ $MAGE_MODE = "developer" ]] && [[ $(composer show -D | grep magento/product-community-edition) != *"$MAGENTO_VERSION"* ]]; then
-  composer require magento/product-community-edition:$MAGENTO_VERSION
-fi
-
-rm -rf /var/www/var/cache/* /var/www/public/static /var/www/var/di /var/www/media/js /var/www/media/css /var/www/media/css_secure /var/www/cachebuster.php
 
 /usr/bin/supervisord
