@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 if [ ! -z "$ADDITIONAL_STORES" ]; then
     while IFS=',' read -ra HOSTS; do
@@ -30,9 +30,7 @@ fi
 
 if [[ /var/www/app/etc/local.xml -ot /var/www/app/etc/local.xml.$APPLICATION_ENV ]]
 then
-    cp /var/www/app/etc/local.xml.$APPLICATION_ENV /var/www/app/etc/local.xml
+    cp -p /var/www/app/etc/local.xml.$APPLICATION_ENV /var/www/app/etc/local.xml
 fi
-
-rm -rf /var/www/var/cache/*
 
 exec /usr/bin/supervisord
