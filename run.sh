@@ -33,4 +33,4 @@ then
     cp -p /var/www/app/etc/env.php.$MAGE_MODE /var/www/app/etc/env.php
 fi
 
-/usr/bin/supervisord
+exec /usr/bin/supervisord
