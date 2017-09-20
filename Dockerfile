@@ -2,8 +2,7 @@ FROM outeredge/edge-docker-php:7.0.23-alpine
 
 ENV MAGENTO_VERSION=2.1.9 \
     MAGE_MODE=default \
-    ADDITIONAL_STORES= \
-    ENABLE_CRON=Off
+    ADDITIONAL_STORES=
 
 VOLUME ["/var/www/var/session", "/var/www/pub/media/catalog", "/var/www/pub/media/wysiwyg"]
 
