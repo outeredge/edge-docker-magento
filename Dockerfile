@@ -14,3 +14,7 @@ RUN wget https://github.com/outeredge/edge-docker-magento/releases/download/${MA
     chmod +x /var/www/bin/magento && \
     cp /var/www/nginx.conf.sample /etc/nginx/magento_default.conf
 
+# Fix GLOB_BRACE bug until Magento 2.2
+# https://github.com/zendframework/zend-stdlib/issues/58
+RUN sed "s,=> GLOB_BRACE,=> defined('GLOB_BRACE') ? GLOB_BRACE : 0,g" -i /vendor/zendframework/zend-stdlib/src/Glob.php
+
