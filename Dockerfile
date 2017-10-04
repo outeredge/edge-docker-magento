@@ -4,8 +4,6 @@ ENV MAGENTO_VERSION=2.2.0 \
     MAGE_MODE=default \
     ADDITIONAL_STORES=
 
-VOLUME ["/var/www/var/session", "/var/www/pub/media/catalog", "/var/www/pub/media/wysiwyg"]
-
 CMD ["/run.sh"]
 
 COPY . /
