@@ -4,8 +4,6 @@ ENV MAGENTO_VERSION=2.1.9 \
     MAGE_MODE=default \
     ADDITIONAL_STORES=
 
-VOLUME ["/var/www/var/session", "/var/www/pub/media/catalog", "/var/www/pub/media/wysiwyg"]
-
 CMD ["/run.sh"]
 
 COPY . /
@@ -18,4 +16,3 @@ RUN wget https://github.com/outeredge/edge-docker-magento/releases/download/${MA
 # Fix GLOB_BRACE bug until Magento 2.2
 # https://github.com/zendframework/zend-stdlib/issues/58
 RUN sed "s,=> GLOB_BRACE,=> defined('GLOB_BRACE') ? GLOB_BRACE : 0,g" -i /var/www/vendor/zendframework/zend-stdlib/src/Glob.php
-
