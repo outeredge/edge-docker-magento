@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:7.1.9-alpine
+FROM outeredge/edge-docker-php:7.1.10-alpine
 
 ENV MAGENTO_VERSION=2.2.0 \
     MAGE_MODE=default \
