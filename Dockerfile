@@ -7,6 +7,7 @@ ENV APPLICATION_ENV=dev \
 CMD ["/run.sh"]
 
 RUN wget https://github.com/OpenMage/magento-mirror/archive/${MAGENTO_VERSION}.tar.gz -O - | tar -zxf - -C /var/www --strip=1 --exclude='README.md' && \
+    chown -R edge:edge /var/www && \
     chmod +x /var/www/cron.sh
 
 COPY . /
