@@ -4,13 +4,10 @@ ENV APPLICATION_ENV=dev \
     ADDITIONAL_STORES= \
     MAGENTO_VERSION=1.9.3.6
 
-VOLUME ["/var/www/var/session", "/var/www/media/catalog", "/var/www/media/wysiwyg"]
-
 CMD ["/run.sh"]
 
 RUN wget https://github.com/OpenMage/magento-mirror/archive/${MAGENTO_VERSION}.tar.gz -O - | tar -zxf - -C /var/www --strip=1 --exclude='README.md' && \
     chmod +x /var/www/cron.sh
-
 
 COPY . /
 
