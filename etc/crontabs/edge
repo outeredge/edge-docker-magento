@@ -1,4 +1,2 @@
 * * * * * php /var/www/bin/magento cron:run
-* * * * * php /var/www/update/cron.php
-* * * * * php /var/www/bin/magento setup:cron:run
 
