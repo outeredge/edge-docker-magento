@@ -1,6 +1,6 @@
-FROM outeredge/edge-docker-php:7.1.16-alpine
+FROM outeredge/edge-docker-php:7.1.17-alpine
 
-ENV MAGENTO_VERSION=2.2.3 \
+ENV MAGENTO_VERSION=2.2.4 \
     MAGE_MODE=default \
     ADDITIONAL_STORES=
 
