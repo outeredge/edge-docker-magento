@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:5.6.31-alpine
+FROM outeredge/edge-docker-php:5.6.36-alpine
 
 ENV APPLICATION_ENV=dev \
     ADDITIONAL_STORES= \
