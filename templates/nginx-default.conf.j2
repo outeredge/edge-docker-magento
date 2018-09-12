@@ -19,7 +19,9 @@ server {
     {% endif %}
 
     set $MAGE_ROOT /var/www;
+    {% if MAGE_MODE is defined and MAGE_MODE %}
     set $MAGE_MODE {{ MAGE_MODE }};
+    {% endif %}
 
     include magento_*.conf;
     include security.conf;
