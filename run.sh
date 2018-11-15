@@ -6,8 +6,8 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
             IFS=':' read -ra HOST <<< "$i"
 
             cp /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/${HOST[0]}.conf
-            sed -i "/root/a server_name ${HOST[1]};" /etc/nginx/conf.d/${HOST[0]}.conf
-            sed -i "/fastcgi_pass/i fastcgi_param MAGE_RUN_CODE ${HOST[0]};" /etc/nginx/conf.d/${HOST[0]}.conf
+            sed -i "/listen/a server_name ${HOST[1]};" /etc/nginx/conf.d/${HOST[0]}.conf
+            sed -i "/listen/a fastcgi_param MAGE_RUN_CODE ${HOST[0]};" /etc/nginx/conf.d/${HOST[0]}.conf
             sed -i 's/ reuseport//g' /etc/nginx/conf.d/${HOST[0]}.conf
             sed -i 's/ default_server//g' /etc/nginx/conf.d/${HOST[0]}.conf
         done
