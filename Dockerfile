@@ -1,6 +1,6 @@
 FROM outeredge/edge-docker-php:7.1.24-alpine
 
-ENV MAGENTO_VERSION=2.2.6
+ENV MAGENTO_VERSION=2.2.7
 
 CMD ["/run.sh"]
 
