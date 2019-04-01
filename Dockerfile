@@ -2,7 +2,7 @@ FROM outeredge/edge-docker-php:7.1.17-alpine
 
 ENV APPLICATION_ENV=dev \
     ADDITIONAL_STORES= \
-    MAGENTO_VERSION=1.9.4.0
+    MAGENTO_VERSION=1.9.4.1
 
 CMD ["/run.sh"]
 
