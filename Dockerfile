@@ -1,14 +1,26 @@
-FROM outeredge/edge-docker-php:7.1.24-alpine
+FROM outeredge/edge-docker-php:7.2.14-alpine
 
-ENV MAGENTO_VERSION=2.3.0
+RUN apk add --no-cache \
+        php7-ctype \
+        php7-gd \
+        php7-simplexml \
+        php7-soap \
+        php7-tokenizer \
+        php7-xmlwriter \
+        php7-xml \
+        php7-xsl \
+        php7-pecl-imagick
 
 CMD ["/run.sh"]
 
+ENV MAGENTO_VERSION=2.3.1
+
+ARG COMPOSER_AUTH
+
 COPY . /
 
-RUN wget -nv https://github.com/outeredge/edge-docker-magento/releases/download/v${MAGENTO_VERSION}/Magento-CE-${MAGENTO_VERSION}.tar.bz2 -O - | tar -jxf - -C /var/www --exclude='composer.lock' --exclude='*.md' && \
-    sed -i '/$relativePath = $request->getPathInfo();/a $relativePath = ltrim(ltrim($relativePath, "media"), "/");' /var/www/pub/get.php && \
-    chmod +x /var/www/bin/magento && \
+RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition . ${MAGENTO_VERSION} && \
+    composer clear-cache && \
     cp /var/www/nginx.conf.sample /etc/nginx/magento_default.conf && \
     sed -i '/^#/d' /etc/nginx/magento_default.conf && \
     sed -i "/fastcgi_backend/a \
