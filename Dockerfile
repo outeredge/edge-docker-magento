@@ -1,10 +1,15 @@
 FROM outeredge/edge-docker-php:7.2.14-alpine
 
+CMD ["/run.sh"]
+
+RUN apk add --no-cache \
+        php7-gd \
+        php7-simplexml \
+        php7-soap
+
 ENV APPLICATION_ENV=dev \
     ADDITIONAL_STORES= \
     MAGENTO_VERSION=1.9.4.1
-
-CMD ["/run.sh"]
 
 RUN wget -nv https://github.com/OpenMage/magento-mirror/archive/${MAGENTO_VERSION}.tar.gz -O - | tar -zxf - -C /var/www --strip=1 --exclude='README.md' && \
     chown -R edge:edge /var/www && \
