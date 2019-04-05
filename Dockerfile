@@ -21,6 +21,7 @@ COPY . /
 
 RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition . ${MAGENTO_VERSION} && \
     composer clear-cache && \
+    rm -f composer.lock && \
     cp /var/www/nginx.conf.sample /etc/nginx/magento_default.conf && \
     sed -i '/^#/d' /etc/nginx/magento_default.conf && \
     sed -i "/fastcgi_backend/a \
