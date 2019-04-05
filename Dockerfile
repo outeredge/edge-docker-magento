@@ -14,4 +14,5 @@ RUN wget -nv https://github.com/outeredge/edge-docker-magento/releases/download/
     sed -i "/fastcgi_backend/a \
         fastcgi_param MAGE_MODE \$MAGE_MODE if_not_empty; \
         fastcgi_param MAGE_RUN_CODE \$MAGE_RUN_CODE if_not_empty;" /etc/nginx/magento_default.conf && \
+    patch -p1 < /PRODSECBUG-2198-2.2-CE.composer-2019-03-27-06-12-19.patch && \
     chown -R edge:edge /var/www
