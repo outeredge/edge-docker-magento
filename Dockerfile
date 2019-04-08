@@ -3,9 +3,12 @@ FROM outeredge/edge-docker-php:7.2.14-alpine
 CMD ["/run.sh"]
 
 RUN apk add --no-cache \
+        libsass \
         php7-gd \
         php7-simplexml \
-        php7-soap
+        php7-soap \
+        php7-tokenizer \
+        php7-xmlwriter
 
 ENV APPLICATION_ENV=dev \
     ADDITIONAL_STORES= \
