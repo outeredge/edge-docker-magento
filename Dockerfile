@@ -1,6 +1,7 @@
 FROM outeredge/edge-docker-php:7.2.14-alpine
 
 RUN apk add --no-cache \
+        libsass \
         php7-ctype \
         php7-gd \
         php7-simplexml \
@@ -9,7 +10,7 @@ RUN apk add --no-cache \
         php7-xmlwriter \
         php7-xml \
         php7-xsl \
-        php7-pecl-imagick
+        php7-pecl-imagick        
 
 CMD ["/run.sh"]
 
