@@ -1,8 +1,7 @@
-FROM outeredge/edge-docker-php:7.2.14-alpine
+FROM outeredge/edge-docker-php:7.2.17-alpine
 
 RUN apk add --no-cache \
         libsass \
-        php7-ctype \
         php7-gd \
         php7-simplexml \
         php7-soap \
