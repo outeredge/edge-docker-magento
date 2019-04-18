@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:7.2.14-alpine
+FROM outeredge/edge-docker-php:7.2.17-alpine
 
 CMD ["/run.sh"]
 
