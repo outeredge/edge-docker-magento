@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
 if [ ! -z "$ADDITIONAL_STORES" ]; then
     while IFS=',' read -ra HOSTS; do
@@ -14,6 +14,8 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
 fi
 
 MAGE_MODE="${MAGE_MODE:-developer}"
+
+echo "Setting Magento mode to $MAGE_MODE"
 
 if [[ /var/www/app/etc/env.php -ot /var/www/app/etc/env.php.$MAGE_MODE ]]
 then
