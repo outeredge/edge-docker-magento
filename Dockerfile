@@ -1,4 +1,10 @@
-FROM outeredge/edge-docker-php:7.2.17-alpine
+FROM outeredge/edge-docker-php:7.2-alpine
+
+ARG COMPOSER_AUTH
+
+CMD ["/magento.sh"]
+
+USER root
 
 RUN apk add --no-cache \
         libsass \
@@ -9,23 +15,18 @@ RUN apk add --no-cache \
         php7-xmlwriter \
         php7-xml \
         php7-xsl \
-        php7-pecl-imagick        
-
-CMD ["/run.sh"]
-
-ENV MAGENTO_VERSION=2.3.3
-
-ARG COMPOSER_AUTH
+        php7-pecl-imagick
 
 COPY . /
 
-RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition . ${MAGENTO_VERSION} && \
-    composer clear-cache && \
-    rm -f composer.lock && \
+USER edge
+
+ENV MAGENTO_VERSION=2.3.3
+
+RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition /var/www ${MAGENTO_VERSION} && \
     sed -i '/$relativePath = $request->getPathInfo();/a $relativePath = ltrim(ltrim($relativePath, "media"), "/");' /var/www/pub/get.php && \
-    cp /var/www/nginx.conf.sample /etc/nginx/magento_default.conf && \
-    sed -i '/^#/d' /etc/nginx/magento_default.conf && \
+    sed -i '/^#/d' /var/www/nginx.conf.sample && \
     sed -i "/fastcgi_backend/a \
         fastcgi_param MAGE_MODE \$MAGE_MODE if_not_empty; \
-        fastcgi_param MAGE_RUN_CODE \$MAGE_RUN_CODE if_not_empty;" /etc/nginx/magento_default.conf && \
-    chown -R edge:edge /var/www
+        fastcgi_param MAGE_RUN_CODE \$MAGE_RUN_CODE if_not_empty;" /var/www/nginx.conf.sample && \
+    sudo cp /var/www/nginx.conf.sample /etc/nginx/magento_default.conf
