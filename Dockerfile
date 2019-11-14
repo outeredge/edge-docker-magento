@@ -13,7 +13,7 @@ RUN apk add --no-cache \
 
 CMD ["/run.sh"]
 
-ENV MAGENTO_VERSION=2.3.2
+ENV MAGENTO_VERSION=2.3.2-p2
 
 ARG COMPOSER_AUTH
 
