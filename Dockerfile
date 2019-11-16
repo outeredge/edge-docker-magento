@@ -4,22 +4,13 @@ ARG COMPOSER_AUTH
 
 CMD ["/magento.sh"]
 
-USER root
-
-RUN apk add --no-cache \
+RUN sudo apk add --no-cache \
         libsass \
         php7-gd \
-        php7-simplexml \
-        php7-soap \
-        php7-tokenizer \
-        php7-xmlwriter \
-        php7-xml \
-        php7-xsl \
-        php7-pecl-imagick
+        php7-pecl-imagick \
+        php7-soap
 
 COPY . /
-
-USER edge
 
 ENV MAGENTO_VERSION=2.3.3
 

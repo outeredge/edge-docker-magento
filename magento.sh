@@ -13,10 +13,10 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
     done <<< "$ADDITIONAL_STORES"
 fi
 
-MAGE_MODE="${MAGE_MODE:-developer}"
-if [[ /var/www/app/etc/env.php -ot /var/www/app/etc/env.php.$MAGE_MODE ]]
+ENV_MODE="${MAGE_MODE:-developer}"
+if [[ /var/www/app/etc/env.php -ot /var/www/app/etc/env.php.$ENV_MODE ]]
 then
-    cp -p /var/www/app/etc/env.php.$MAGE_MODE /var/www/app/etc/env.php
+    cp -p /var/www/app/etc/env.php.$ENV_MODE /var/www/app/etc/env.php
 fi
 
 exec /launch.sh
