@@ -15,7 +15,6 @@ COPY . /
 ENV MAGENTO_VERSION=2.3.3
 
 RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition /var/www ${MAGENTO_VERSION} && \
-    sed -i '/$relativePath = $request->getPathInfo();/a $relativePath = ltrim(ltrim($relativePath, "media"), "/");' /var/www/pub/get.php && \
     sed -i '/^#/d' /var/www/nginx.conf.sample && \
     sed -i "/fastcgi_backend/a \
         fastcgi_param MAGE_MODE \$MAGE_MODE if_not_empty; \
