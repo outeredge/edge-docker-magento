@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
-sed -i '/$relativePath = $request->getPathInfo();/a $relativePath = ltrim(ltrim($relativePath, "media"), "/");' $MAGE_ROOT/pub/get.php
+if [[ -f $MAGE_ROOT/pub/get.php ]]; then
+    sed -i '/$relativePath = $request->getPathInfo();/a $relativePath = ltrim(ltrim($relativePath, "media"), "/");' $MAGE_ROOT/pub/get.php
+fi
 
 if [ ! -z "$ADDITIONAL_STORES" ]; then
     while IFS=',' read -ra HOSTS; do
@@ -15,10 +17,10 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
     done <<< "$ADDITIONAL_STORES"
 fi
 
-ENV_MODE="${MAGE_MODE:-developer}"
-if [[ /var/www/app/etc/env.php -ot /var/www/app/etc/env.php.$ENV_MODE ]]
+MAGE_MODE="${MAGE_MODE:-developer}"
+if [[ $MAGE_ROOT/app/etc/env.php -ot $MAGE_ROOT/app/etc/env.php.$MAGE_MODE ]]
 then
-    cp -p /var/www/app/etc/env.php.$ENV_MODE /var/www/app/etc/env.php
+    cp -p $MAGE_ROOT/app/etc/env.php.$MAGE_MODE $MAGE_ROOT/app/etc/env.php
 fi
 
 exec /launch.sh
