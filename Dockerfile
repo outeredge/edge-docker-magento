@@ -7,8 +7,7 @@ CMD ["/magento.sh"]
 RUN sudo apk add --no-cache \
         libsass \
         php7-gd \
-        php7-pecl-imagick \
-        php7-soap
+        php7-pecl-imagick
 
 COPY . /
 
