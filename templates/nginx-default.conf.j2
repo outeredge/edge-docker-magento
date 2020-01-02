@@ -19,6 +19,6 @@ server {
     location = /robots.txt { log_not_found off; }
     location = /favicon.ico { log_not_found off; }
 
-    include magento_*.conf
+    include magento_*.conf;
     include security.conf;
 }
