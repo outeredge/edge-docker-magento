@@ -1,10 +1,11 @@
-FROM outeredge/edge-docker-php:7.2-alpine
+FROM outeredge/edge-docker-php:7.1-alpine
 
 CMD ["/magento.sh"]
 
 RUN sudo apk add --no-cache \
         libsass \
-        php7-gd
+        php7-gd \
+        patch
 
 COPY . /
 
