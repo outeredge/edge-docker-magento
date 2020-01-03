@@ -6,7 +6,8 @@ CMD ["/magento.sh"]
 
 RUN sudo apk add --no-cache \
         libsass \
-        php7-gd
+        php7-gd \
+        php7-iconv
 
 COPY . /
 
