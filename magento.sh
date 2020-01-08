@@ -3,7 +3,7 @@
 if [[ -f $MAGE_ROOT/index.php ]]; then
     sed -i "s/isset(\$_SERVER\['MAGE_IS_DEVELOPER_MODE'\])/getenv('APPLICATION_ENV') == 'dev'/" $MAGE_ROOT/index.php && \
     sed -i "/setIsDeveloperMode(true);/a ini_set('display_errors', 1);" $MAGE_ROOT/index.php && \
-    patch -d $MAGE_ROOT -p0 < /uploader.patch
+    patch -d $MAGE_ROOT -r /dev/null --forward -p0 < /uploader.patch &>/dev/null
 fi
 
 if [ ! -z "$ADDITIONAL_STORES" ]; then
