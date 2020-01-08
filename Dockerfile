@@ -14,7 +14,7 @@ COPY . /
 ENV MAGENTO_VERSION=2.3.3 \
     MAGE_ROOT=/var/www
 
-RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition ${MAGE_ROOT} ${MAGENTO_VERSION} && \
+RUN composer create-project --no-cache --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition ${MAGE_ROOT} ${MAGENTO_VERSION} && \
     sed -i '/^#/d' ${MAGE_ROOT}/nginx.conf.sample && \
     sed -i "/fastcgi_backend/a \
         fastcgi_param MAGE_MODE \$MAGE_MODE if_not_empty; \
