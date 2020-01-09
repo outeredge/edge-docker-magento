@@ -1,9 +1,5 @@
 #!/bin/bash -e
 
-if [[ -f $MAGE_ROOT/pub/get.php ]]; then
-    sed -i '/$relativePath = $request->getPathInfo();/a $relativePath = ltrim(ltrim($relativePath, "media"), "/");' $MAGE_ROOT/pub/get.php
-fi
-
 if [ ! -z "$ADDITIONAL_STORES" ]; then
     while IFS=',' read -ra HOSTS; do
         for i in "${HOSTS[@]}"; do
