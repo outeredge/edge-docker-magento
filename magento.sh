@@ -13,7 +13,7 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
     done <<< "$ADDITIONAL_STORES"
 fi
 
-if [[ $MAGE_ROOT/app/etc/local.xml -ot $MAGE_ROOT/app/etc/local.xml.$APPLICATION_ENV ]]
+if [[ -e $MAGE_ROOT/app/etc/local.xml.$APPLICATION_ENV ]]
 then
     cp -p $MAGE_ROOT/app/etc/local.xml.$APPLICATION_ENV $MAGE_ROOT/app/etc/local.xml
 fi
