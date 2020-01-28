@@ -1,10 +1,5 @@
-server {
-    listen 80 default_server reuseport;
-
-    set $MAGE_ROOT {% if MAGE_ROOT is defined %}{{ MAGE_ROOT }}{% else %}/var/www{% endif %};
+    set $MAGE_ROOT {{ WEB_ROOT }};
     set $MAGE_MODE "{% if MAGE_MODE is defined %}{{ MAGE_MODE }}{% endif %}";
     set $MAGE_RUN_CODE "{% if MAGE_RUN_CODE is defined %}{{ MAGE_RUN_CODE }}{% endif %}";
 
     include magento_default.conf;
-    include security.conf;
-}
