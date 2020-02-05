@@ -13,9 +13,9 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
     done <<< "$ADDITIONAL_STORES"
 fi
 
-if [[ -e $MAGE_ROOT/app/etc/local.xml.$APPLICATION_ENV ]]
+if [[ -e $WEB_ROOT/app/etc/local.xml.$APPLICATION_ENV ]]
 then
-    cp -p $MAGE_ROOT/app/etc/local.xml.$APPLICATION_ENV $MAGE_ROOT/app/etc/local.xml
+    cp -p $WEB_ROOT/app/etc/local.xml.$APPLICATION_ENV $WEB_ROOT/app/etc/local.xml
 fi
 
 exec /launch.sh
