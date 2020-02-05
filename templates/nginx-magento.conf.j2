@@ -1,7 +1,4 @@
-server {
-    listen 80 default_server reuseport;
-
-    root {% if MAGE_ROOT is defined %}{{ MAGE_ROOT }}{% else %}/var/www{% endif %};
+    root {{ WEB_ROOT }};
 
     location / {
         try_files $uri $uri/ /index.php$is_args$args;
@@ -16,9 +13,4 @@ server {
         fastcgi_pass fastcgi_backend;
     }
 
-    location = /robots.txt { log_not_found off; }
-    location = /favicon.ico { log_not_found off; }
-
     include magento_*.conf;
-    include security.conf;
-}
