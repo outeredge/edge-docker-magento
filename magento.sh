@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 if [ ! -z "$ADDITIONAL_STORES" ]; then
     while IFS=',' read -ra HOSTS; do
