@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:7.2-alpine
+FROM outeredge/edge-docker-php:7.3-alpine
 
 ARG COMPOSER_AUTH
 
@@ -11,7 +11,7 @@ RUN sudo apk add --no-cache \
 
 COPY . /
 
-ENV MAGENTO_VERSION=2.3.4 \
+ENV MAGENTO_VERSION=2.3.5-p1 \
     NGINX_CONF=magento
 
 RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition ${WEB_ROOT} ${MAGENTO_VERSION} && \
