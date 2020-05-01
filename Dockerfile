@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:7.1-alpine
+FROM outeredge/edge-docker-php:7.2-alpine
 
 CMD ["/magento.sh"]
 
