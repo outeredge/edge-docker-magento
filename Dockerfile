@@ -11,7 +11,7 @@ RUN sudo apk add --no-cache \
 
 COPY . /
 
-ENV MAGENTO_VERSION=2.3.4 \
+ENV MAGENTO_VERSION=2.3.4-p2 \
     NGINX_CONF=magento
 
 RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition ${WEB_ROOT} ${MAGENTO_VERSION} && \
