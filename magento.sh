@@ -14,7 +14,7 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
 fi
 
 MAGE_MODE="${MAGE_MODE:-developer}"
-if [[ $WEB_ROOT/app/etc/env.php -ot $WEB_ROOT/app/etc/env.php.$MAGE_MODE ]]
+if [[ -f $WEB_ROOT/app/etc/env.php.$MAGE_MODE ]]
 then
     cp -p $WEB_ROOT/app/etc/env.php.$MAGE_MODE $WEB_ROOT/app/etc/env.php
 fi
