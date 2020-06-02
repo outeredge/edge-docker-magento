@@ -1,4 +1,4 @@
-FROM outeredge/edge-docker-php:7.2-alpine
+FROM outeredge/edge-docker-php:7.3-alpine
 
 ARG COMPOSER_AUTH
 
