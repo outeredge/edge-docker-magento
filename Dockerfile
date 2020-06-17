@@ -12,7 +12,8 @@ RUN sudo apk add --no-cache \
 COPY . /
 
 ENV MAGENTO_VERSION=2.3.4-p2 \
-    NGINX_CONF=magento
+    NGINX_CONF=magento \
+    ENABLE_REDIS=On
 
 RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition ${WEB_ROOT} ${MAGENTO_VERSION} && \
     composer clear-cache && \
