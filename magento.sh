@@ -13,7 +13,6 @@ if [ ! -z "$ADDITIONAL_STORES" ]; then
     done <<< "$ADDITIONAL_STORES"
 fi
 
-MAGE_ENV="${MAGE_ENV:-$MAGE_MODE}"
 if [ -e "$WEB_ROOT/app/etc/env.php.$MAGE_ENV" ]
 then
     cp -p $WEB_ROOT/app/etc/env.php.$MAGE_ENV $WEB_ROOT/app/etc/env.php
