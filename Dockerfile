@@ -11,7 +11,7 @@ RUN sudo apk add --no-cache \
 
 COPY . /
 
-ENV MAGENTO_VERSION=2.3.5-p2 \
+ENV MAGENTO_VERSION=2.4.1 \
     NGINX_CONF=magento \
     ENABLE_REDIS=On
 
