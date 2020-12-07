@@ -5,6 +5,7 @@ ARG COMPOSER_AUTH
 CMD ["/magento.sh"]
 
 RUN sudo apk add --no-cache \
+        imagemagick \
         libsass \
         php7-gd \
         php7-pecl-imagick
