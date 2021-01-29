@@ -1,0 +1,25 @@
+{% if ENABLE_VSF is defined and ENABLE_VSF == 'On' %}
+    location /{% if CONFIG__DEFAULT__ADMIN__URL__CUSTOM_PATH is defined %}{{ CONFIG__DEFAULT__ADMIN__URL__CUSTOM_PATH }}{% else %}admin{% endif %} {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:3000/;
+    }
+
+    location /assets/ {
+        proxy_pass http://127.0.0.1:3000/assets/;
+    }
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:8080/api/;
+    }
+
+    location /img/ {
+        proxy_pass http://127.0.0.1:8080/img/;
+    }
+{% else %}
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+{% endif %}
