@@ -24,4 +24,4 @@ RUN composer create-project --no-interaction --prefer-dist --no-dev --repository
     sed -i "/fastcgi_backend/a \
         fastcgi_param MAGE_MODE \$MAGE_MODE if_not_empty; \
         fastcgi_param MAGE_RUN_CODE \$MAGE_RUN_CODE if_not_empty;" ${WEB_ROOT}/nginx.conf.sample && \
-    sudo cp ${WEB_ROOT}/nginx.conf.sample /templates/nginx-magento.conf.j2
+    sudo cp ${WEB_ROOT}/nginx.conf.sample /templates/magento.conf.j2
