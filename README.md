@@ -4,6 +4,7 @@ Magento running on Docker. Plays nicely with [dredger](https://github.com/outere
 Regularly updated with the latest 2.* releases (see branches).
 
 ## Configuration Options
+
 Most configuration can be done with environment variables. Here are the available options;
 
 | Environment       | Default | Description |
