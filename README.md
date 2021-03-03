@@ -1,5 +1,5 @@
 # edge-docker-magento
-Magento running on Docker. Plays nicely with [dredger](https://github.com/outeredge/dredger). Designed for development use only.
+Magento running on Docker. Plays nicely with Gitpod, Eclipse Che & [Dredger](https://github.com/outeredge/dredger). Designed for development use only.
 
 Regularly updated with the latest 2.* releases (see branches).
 
