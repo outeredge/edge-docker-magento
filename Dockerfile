@@ -1,13 +1,17 @@
-FROM outeredge/edge-docker-php:7.2-alpine
+FROM outeredge/edge-docker-php:7.2
 
 ARG COMPOSER_AUTH
 
 CMD ["/magento.sh"]
 
-RUN sudo apk add --no-cache \
-        libsass \
-        php7-gd \
-        php7-pecl-imagick
+RUN sudo apt-get update \
+    && sudo apt-get install --no-install-recommends --yes \
+        imagemagick \
+        sassc \
+        php${PHP_VERSION}-gd \
+        php${PHP_VERSION}-imagick \
+    # Cleanup
+    && sudo rm -rf /var/lib/apt/lists/*
 
 COPY . /
 
