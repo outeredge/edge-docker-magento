@@ -4,7 +4,7 @@ Magento running on Docker. Plays nicely with Gitpod & Eclipse Che. Designed for 
 Regularly updated with the latest 2.* releases (see branches).
 
 ## Configuration Options
-Most configuration can be done with environment variables. Here are the available options;
+Most configuration can be done with environment variables. Here are the available options:
 
 | Environment       | Default | Description |
 | -------------     | ------- | --- |
@@ -15,3 +15,13 @@ Most configuration can be done with environment variables. Here are the availabl
 | ADDITIONAL_STORES | -       | Comma separated list of Magento store codes and Nginx server_name's in the format `MAGE_RUN_CODE:server_name`, i.e. `test_view:test.co.uk` or using a regex `test_view:~test` which would switch Magento to the `test_view` store if the domain name contained the word `test` |
 
 See [edge-docker-php](https://github.com/outeredge/edge-docker-php) for additional options such as SMTP and PHP configuration.
+
+## PHP versions
+
+Please refer to the table below for the PHP version in use by recent releases:
+
+| Magento Release (image tag)   | PHP     |
+| ----------------------------- | ------- |
+| 2.4.2                         | 7.4     |
+| 2.4.1, 2.4.0, 2.3.6           | 7.3     |
+| 2.3.5, 2.3.4                  | 7.2     |
