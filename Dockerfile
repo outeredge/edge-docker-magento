@@ -13,7 +13,7 @@ COPY . /
 
 ENV APPLICATION_ENV=dev \
     ADDITIONAL_STORES= \
-    NGINX_CONF=magento \
+    NGINX_CONF=magento1 \
     MAGE_IS_DEVELOPER_MODE=true \
     MAGENTO_VERSION=1.9.4.5
 
