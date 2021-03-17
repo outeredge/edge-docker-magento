@@ -1,10 +1,13 @@
-FROM outeredge/edge-docker-php:5.6-alpine
+FROM outeredge/edge-docker-php:5.6
 
 CMD ["/magento.sh"]
 
-RUN sudo apk add --no-cache \
-        libsass \
-        php5-gd
+RUN sudo apt-get update \
+    && sudo apt-get install --no-install-recommends --yes \
+        sassc \
+        php${PHP_VERSION}-gd \
+    # Cleanup
+    && sudo rm -rf /var/lib/apt/lists/*
 
 COPY . /
 
