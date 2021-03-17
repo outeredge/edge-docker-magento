@@ -1,10 +1,13 @@
-FROM outeredge/edge-docker-php:7.2-alpine
+FROM outeredge/edge-docker-php:7.2
 
 CMD ["/magento.sh"]
 
-RUN sudo apk add --no-cache \
-        libsass \
-        php7-gd
+RUN sudo apt-get update \
+    && sudo apt-get install --no-install-recommends --yes \
+        sassc \
+        php${PHP_VERSION}-gd \
+    # Cleanup
+    && sudo rm -rf /var/lib/apt/lists/*
 
 COPY . /
 
