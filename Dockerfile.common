@@ -23,6 +23,7 @@ RUN composer create-project --no-interaction --prefer-dist --no-dev --repository
     sed -i "/location \/ {/i {% include '/templates/nginx-vsf.conf.j2' %}" ${WEB_ROOT}/nginx.conf.sample && \
     sed -i "/location \/ {/,+2d" ${WEB_ROOT}/nginx.conf.sample && \
     sed -i '/memory_limit/d' ${WEB_ROOT}/nginx.conf.sample && \
+    sed -i 's/|health_check/|health_check|search/g' ${WEB_ROOT}/nginx.conf.sample && \
     sed -i "/fastcgi_backend/a \
         fastcgi_param MAGE_MODE \$MAGE_MODE if_not_empty; \
         fastcgi_param MAGE_RUN_CODE \$MAGE_RUN_CODE if_not_empty;" ${WEB_ROOT}/nginx.conf.sample && \
