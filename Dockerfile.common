@@ -3,12 +3,14 @@ ARG COMPOSER_AUTH
 CMD ["/magento.sh"]
 
 RUN sudo apt-get update \
+    && sudo rm -Rf /etc/php/$PHP_VERSION/cli \
     && sudo apt-get install --no-install-recommends --yes \
         imagemagick \
         sassc \
         php${PHP_VERSION}-gd \
         php${PHP_VERSION}-imagick \
-    # Cleanup
+    && sudo rm -Rf /etc/php/$PHP_VERSION/cli \
+    && sudo ln -s /etc/php/$PHP_VERSION/fpm /etc/php/$PHP_VERSION/cli \
     && sudo rm -rf /var/lib/apt/lists/*
 
 COPY . /
