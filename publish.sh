@@ -11,6 +11,6 @@ if [ -z "$MAGENTO_COMPOSER_AUTH" ]; then
 fi;
 
 echo "Building image outeredge/edge-docker-magento:$1 with Dockerfile.$1"
-docker build --build-arg COMPOSER_AUTH='$MAGENTO_COMPOSER_AUTH' --pull . -t outeredge/edge-docker-magento:$1 -f Dockerfile.$1
+docker build --build-arg COMPOSER_AUTH=$MAGENTO_COMPOSER_AUTH --pull . -t outeredge/edge-docker-magento:$1 -f Dockerfile.$1
 docker push outeredge/edge-docker-magento:$1
 echo "Complete!"

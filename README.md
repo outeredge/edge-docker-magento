@@ -25,3 +25,11 @@ Please refer to the table below for the PHP version in use by recent releases:
 | 2.4.2, 2.4.3                  | 7.4     |
 | 2.4.1, 2.4.0, 2.3.6           | 7.3     |
 | 2.3.5, 2.3.4                  | 7.2     |
+
+## Building
+
+If you want to build this image yourself you will need to export the `$MAGENTO_COMPOSER_AUTH` environment variable. You could do this in `~/.bashrc` like so (replace keys with your Magento composer keys):
+
+```
+export MAGENTO_COMPOSER_AUTH="{\"http-basic\":{\"repo.magento.com\":{\"username\":\"REPLACEME\",\"password\":\"REPLACEME\"}}}"
+```
