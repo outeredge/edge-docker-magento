@@ -1,6 +1,3 @@
-    # strip trailing slashes
-    rewrite ^/(.+)/$ /$1 permanent;
-        
     set $MAGE_ROOT {{ WEB_ROOT }};
     set $MAGE_MODE "{% if MAGE_MODE is defined %}{{ MAGE_MODE }}{% endif %}";
     set $MAGE_RUN_CODE "{% if MAGE_RUN_CODE is defined %}{{ MAGE_RUN_CODE }}{% endif %}";
