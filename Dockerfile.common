@@ -19,7 +19,10 @@ ENV MAGENTO_VERSION=${MAGENTO_VERSION} \
     NGINX_CONF=magento \
     ENABLE_REDIS=On
 
-RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition ${WEB_ROOT} ${MAGENTO_VERSION} && \
+RUN cp /composer.json . && \
+    sudo rm /composer.json && \
+    composer require --update-no-dev magento/product-community-edition ${MAGENTO_VERSION} && \
+    composer install --no-interaction --prefer-dist --no-dev && \
     composer clear-cache && \
     sed -i '/^#/d' ${WEB_ROOT}/nginx.conf.sample && \
     sed -i '/memory_limit/d' ${WEB_ROOT}/nginx.conf.sample && \
