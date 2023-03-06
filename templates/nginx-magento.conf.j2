@@ -3,3 +3,5 @@
     set $MAGE_RUN_CODE "{% if MAGE_RUN_CODE is defined %}{{ MAGE_RUN_CODE }}{% endif %}";
 
     {% include '/templates/magento.conf.j2' %}
+
+    include {{ WEB_ROOT }}/nginx[.]conf;
