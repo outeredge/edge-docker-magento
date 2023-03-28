@@ -17,7 +17,8 @@ COPY . /
 
 ENV MAGENTO_VERSION=${MAGENTO_VERSION} \
     NGINX_CONF=magento \
-    ENABLE_REDIS=On
+    ENABLE_REDIS=On \
+    PHP_OPCACHE_VALIDATE=Off
 
 RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition ${WEB_ROOT} ${MAGENTO_VERSION} && \
     composer clear-cache && \
