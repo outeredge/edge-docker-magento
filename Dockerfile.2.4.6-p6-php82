@@ -1,0 +1,7 @@
+# syntax=edrevo/dockerfile-plus
+
+FROM outeredge/edge-docker-php:8.2
+
+ARG MAGENTO_VERSION=2.4.6-p6
+
+INCLUDE+ Dockerfile.common
