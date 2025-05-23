@@ -21,10 +21,12 @@ Please refer to the table below for the PHP version in use by recent releases:
 
 | Magento Release (image tag)   | PHP     |
 | ----------------------------- | ------- |
-| 2.4.4                         | 8.1     |
+| 2.4.7, 2.4.8                  | 8.3     |
+| 2.4.4, 2.4.5, 2.4.6           | 8.1     |
 | 2.4.2, 2.4.3                  | 7.4     |
 | 2.4.1, 2.4.0, 2.3.6           | 7.3     |
 | 2.3.5, 2.3.4                  | 7.2     |
+
 
 ## Building
 
