@@ -2,17 +2,6 @@ ARG COMPOSER_AUTH
 
 CMD ["/magento.sh"]
 
-RUN sudo apt-get update \
-    && sudo rm -Rf /etc/php/$PHP_VERSION/cli \
-    && sudo apt-get install --no-install-recommends --yes \
-        imagemagick \
-        sassc \
-        php${PHP_VERSION}-gd \
-        php${PHP_VERSION}-imagick \
-    && sudo rm -Rf /etc/php/$PHP_VERSION/cli \
-    && sudo ln -s /etc/php/$PHP_VERSION/fpm /etc/php/$PHP_VERSION/cli \
-    && sudo rm -rf /var/lib/apt/lists/*
-
 COPY . /
 
 ENV MAGENTO_VERSION=${MAGENTO_VERSION} \
@@ -21,6 +10,7 @@ ENV MAGENTO_VERSION=${MAGENTO_VERSION} \
     PHP_OPCACHE_VALIDATE=Off
 
 RUN composer create-project --no-interaction --prefer-dist --no-dev --repository=https://repo.magento.com/ magento/project-community-edition ${WEB_ROOT} ${MAGENTO_VERSION} && \
+    composer require outeredge/magento-disable-common && \
     composer clear-cache && \
     sed -i '/^#/d' ${WEB_ROOT}/nginx.conf.sample && \
     sed -i '/memory_limit/d' ${WEB_ROOT}/nginx.conf.sample && \
