@@ -5,4 +5,4 @@ then
     cp -p $WEB_ROOT/app/etc/env.php.$MAGE_ENV $WEB_ROOT/app/etc/env.php
 fi
 
-exec /launch.sh
+exec /launch.sh "$@"
