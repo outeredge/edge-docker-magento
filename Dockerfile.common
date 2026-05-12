@@ -1,7 +1,5 @@
 ARG COMPOSER_AUTH
 
-CMD ["/magento.sh"]
-
 COPY . /
 
 ENV MAGENTO_VERSION=${MAGENTO_VERSION} \
